@@ -1,149 +1,177 @@
 <!DOCTYPE html>
+<!--
+  기말 프로젝트 기획서 양식 : web-final/plan/index.html
+  1. 이 파일을 내 web-final 저장소의 plan 폴더 안에 둡니다(주소 https://내아이디.github.io/web-final/plan/).
+  2. TODO 주석이 붙은 곳마다, 노란 점선 상자(class="todo")를 지우고 내 내용을 씁니다.
+     (VS Code 확장 Todo Tree를 쓰면 TODO 줄이 한 목록으로 모입니다. 없으면 Ctrl+Shift+F로 TODO 검색)
+  3. 끝낸 TODO 주석 줄과 노란 상자는 지웁니다. 노란 상자가 남아 있으면 화면 맨 위에 "남은 TODO" 띠가 보입니다.
+  4. 그림 파일(call.png, sketch-board.jpg, sketch-plusone.jpg)은 이 index.html과 같은 plan 폴더에 넣습니다.
+     파일 이름이 src와 똑같으면 저절로 보입니다(대소문자와 확장자까지 같게).
+  5. 일곱 항목의 번호와 순서는 바꾸지 않습니다. 색과 글꼴 같은 디자인은 바꿔도 됩니다.
+  6. 대표 요청 주소의 키 자리에는 대문자 KEY라고 적습니다. 실제 키는 keys.js 한 곳에만 둡니다.
+  7. 다 쓰면 커밋, 동기화 ⇒ 13주차 수업 시작 전까지 저장소 주소와 기획서 주소를 LMS 과제로 제출합니다.
+-->
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>웹 프로젝트 기획서</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기획서 : 날씨네(Nal-cine)</title>
+  <style>
+    /* 기획서 양식 스타일 : 12주차 4차시 27장 예시와 같은 모양. 바꿔도 됩니다 */
+    :root { --deep: #1f3a68; --line: #d4dbe6; --head: #e8eef7; --bg: #f4f6fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 20px 28px 40px; background: var(--bg); color: #222; font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif; font-size: 17px; line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere; }
+    header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; border-bottom: 3px solid var(--deep); padding-bottom: 8px; margin-bottom: 16px; }
+    header h1 { font-size: 28px; margin: 0; color: var(--deep); }
+    header p { margin: 0; color: #555; overflow-wrap: anywhere; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+    section { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px 14px; min-width: 0; }
+    section.wide { grid-column: 1 / -1; }
+    h2 { font-size: 20px; margin: 0 0 8px; color: var(--deep); }
+    ul { margin: 0; padding-left: 22px; }
+    p { margin: 4px 0; }
+    .tbl { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 16px; }
+    th, td { border: 1px solid #c9d2e0; padding: 6px 8px; text-align: left; vertical-align: top; }
+    th { background: var(--head); white-space: nowrap; }
+    code { font-family: Consolas, "D2Coding", monospace; font-size: 15px; overflow-wrap: anywhere; }
+    figure { margin: 0; }
+    figure + figure { margin-top: 12px; }
+    figcaption { font-size: 15px; color: #555; margin-top: 4px; }
+    /* 주소창 모양 틀 : 주소 줄 + 캡처 그림 */
+    .shot { border: 1px solid #b8c2d2; border-radius: 6px; overflow: hidden; background: #fff; }
+    .shot .bar { background: #e9ecf1; padding: 4px 10px; font-family: Consolas, monospace; font-size: 14px; color: #333; overflow-wrap: anywhere; }
+    /* 그림 : 파일이 아직 없으면 빗금 상자로 보임 */
+    figure img { display: block; width: 100%; height: auto; min-height: 140px; max-height: 520px; object-fit: contain; background: repeating-linear-gradient(135deg, #fff 0 10px, #eef1f6 10px 20px); }
+    .sk { display: flex; gap: 12px; }
+    .sk figure { flex: 1; min-width: 0; margin-top: 0; }
+    /* TODO 상자 : 내 내용을 쓰면 지움 */
+    .todo { background: #fff4cc; border: 1px dashed #b38f00; border-radius: 4px; padding: 0 6px; color: #5c4700; }
+    #todo-left { display: none; background: #fff4cc; border: 2px solid #b38f00; border-radius: 8px; padding: 6px 14px; margin-bottom: 14px; color: #5c4700; font-weight: 700; }
+    @media (max-width: 760px) {
+      body { padding: 14px 14px 30px; }
+      .grid { grid-template-columns: 1fr; }
+      .sk { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
+  <p id="todo-left"></p>
 
-  <!-- 1. 이름, GitHub 아이디, 사이트 이름 -->
   <header>
-    <h1>사이트 이름:날씨네(Nal-Cine)</h1>
-    <p>
-      <strong>이름:</strong> 박세준 &nbsp;&nbsp;
-      <strong>GitHub 아이디:</strong> nazign
-    </p>
+    <h1>기말 프로젝트 기획서</h1>
+    <!-- TODO 기획서 0: 내 사이트 이름과 내 기획서 주소(내아이디 자리에 내 GitHub 아이디) -->
+    <p><span>날씨네(Nal-cine)</span> / https://<span>nazign</span>.github.io/web-final/plan/</p>
   </header>
 
-  <!-- 2. 누구를 위한 사이트(한 줄) / 보드, 박스오피스, 상세에 보여 줄 것 -->
-  <section>
-    <h2>2. 누구를 위한 사이트 & 주요 화면 구성</h2>
-    <p><strong>누구를 위한 사이트:</strong> 최고의 날씨에 영화를 보고 싶은 사람들을 위한 사이트</p>
+  <div class="grid">
+    <section id="s1">
+      <h2>1. 이름, GitHub 아이디, 사이트 이름</h2>
+      <!-- TODO 기획서 1: 이름, GitHub 아이디(소문자), 사이트 이름 -->
+      <ul>
+        <li>이름 : <span>박세준</span></li>
+        <li>GitHub 아이디 : <span>nazign</span></li>
+        <li>사이트 이름 : <span>날씨네(Nal-cine)</span></li>
+      </ul>
+    </section>
 
-    <h3>보드 (Board)</h3>
-    <ul>
-      <li>사용자가 저장한 '보고 싶은 영화' 목록</li>
-      <li>평점 및 한줄 코멘트 표시</li>
-      <li>상태별(전체 / 찜 / 관람완료) 필터링 기능</li>
-    </ul>
+    <section id="s2">
+      <h2>2. 누구를 위한 사이트와 영화 사이트 계획</h2>
+      <!-- TODO 기획서 2: 누구를 위한 사이트인지 한 줄, 보드와 박스오피스와 상세에 보여 줄 것 -->
+      <p><b>한 줄</b> : <span>최고의 날씨에 보는 영화</span></p>
+      <ul>
+        <li>보드 : <span>보드에 보여 줄 것( 상영 중 영화, 평점 배지, 검색, 정렬, 찜)</span></li>
+        <li>박스오피스 : <span>박스오피스에 보여 줄 것( 어제 순위 10편과 포스터)</spanass=></li>
+        <li>상세 : <span>상세에 보여 줄 것( 관객 수, 감독, 장르, 상영시간)</span></li>
+      </ul>
+    </section>
 
-    <h3>박스오피스 (Box Office)</h3>
-    <ul>
-      <li>일별/주간 박스오피스 TOP 5 순위 및 순위 변동</li>
-      <li>영화 포스터, 개봉일, 누적 관객수 정보</li>
-      <li>'내 보드에 담기' 추가 버튼</li>
-    </ul>
+    <section id="s3" class="wide">
+      <!-- TODO 기획서 3: 플러스원 페이지 이름, 한 줄 소개, 쓰는 API 표 -->
+      <h2>3. 플러스원 페이지 : <span>OpenWeatherMap</spanlass=></h2>
+      <p><span>날씨를 확인할 수 있음</spanclass=></p>
+      <div class="tbl">
+        <table>
+          <thead>
+            <tr><th scope="col">API</th><th scope="col">제공기관</th><th scope="col">대표 요청 주소</th><th scope="col">키 이름</th><th scope="col">키 발급 상태</th></tr>
+          </thead>
+          <tbody>
+          <!-- TODO 기획서 3: API 한 개 = tr 한 줄. 두 개 이상이면 이 tr을 복사해 늘림 -->
+          <!-- 대표 요청 주소의 키 자리는 대문자 KEY. 키 발급 상태는 받음, 신청함(승인 대기), 필요 없음(키 없는 보조 API) 중 하나 -->
+          <tr>
+            <td><span>Weather APIs</spanclass=></td>
+            <td><span>OpenWeatherMap</spanclass=></td>
+            <td><code><span>http://api.openweathermap.org/data/2.5//weather?q={city}&appid=KEY&lang={lang}&units=metric</spans=></code></td>
+            <td><code><span>Weather_KEY</spans=></code></td>
+            <td><span>받음</spanass=></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-    <h3>상세 (Detail)</h3>
-    <ul>
-      <li>영화 줄거리, 장르, 상영시간, 감독 및 주요 출연진</li>
-      <li>박스오피스 매출액 및 관객수 추이</li>
-    </ul>
-  </section>
+    <section id="s4"> 
+      <h2>4. 주소창 호출 결과</h2>
+      <!-- TODO 기획서 4: 주소창에서 대표 요청 주소를 부른 화면을 캡처해 plan 폴더에 call.png로 저장 -->
+      <figure>
+        <div class="shot">
+          <!-- TODO 기획서 4: 주소 줄에는 내가 부른 주소를 쓰되 키 자리는 KEY -->
+          <div class="bar"><span>http://api.openweathermap.org/data/2.5//weather?q=daejeon&appid=KEY&lang=kr&units=metric</span></div>
+          <img src="call.png" alt="주소창 호출 결과">
+        </div>
+        <figcaption>call.png : <span>현재 온도, 강수량, 풍속, 구름의 종류, 경도, 위도 등</spanlass=></figcaption>
+      </figure>
+      <!-- TODO 기획서 4: 안내문 9.5절 카탈로그 밖 API를 쓸 때만 아래 figure를 남기고 console.png를 넣음. 카탈로그 안 API만 쓰면 아래 figure를 통째로 지움 -->
+      <figure>
+        <img src="console.png" alt="콘솔 fetch 성공 화면">
+        <figcaption>console.png : <span class="todo">TODO 카탈로그 밖 API일 때만, 개발자 도구 Console에서 fetch로 부른 응답이 빨간 오류 없이 보이는 화면</span></figcaption>
+      </figure>
+    </section>
 
-  <!-- 3. 플러스원 페이지 & 쓰는 API 표 -->
-  <section>
-    <h2>3. 플러스원 페이지 </h2>
-    <p>
-      <strong>플러스원 페이지 이름:</strong> openweathermap<br />
-      <strong>한 줄 소개:</strong> 날씨 알려주는 사이트 </p>
+    <section id="s5">
+      <h2>5. 화면 스케치</h2>
+      <!-- TODO 기획서 5: 보드와 플러스원 페이지 스케치 2장(손그림 사진도 됨). jpg가 아니면 src의 확장자를 바꿈 -->
+      <div class="sk">
+        <figure>
+          <img src="board.jpg" alt="보드 화면 스케치">
+          <figcaption>보드 : <span>보드 화면 스케치</spanlass=></figcaption>
+        </figure>
+        <figure>
+          <img src="plusonePage.jpg" alt="플러스원 페이지 스케치">
+          <figcaption>플러스원 페이지 : <span>플러스원 페이지 스케치</spanss=></figcaption>
+        </figure>
+      </div>
+    </section>
 
-    <table>
-      <thead>
-        <tr>
-          <th>API</th>
-          <th>제공기관</th>
-          <th>대표 요청 주소</th>
-          <th>키 이름</th>
-          <th>키 발급 상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>current weather data</td>
-          <td>openweathermap</td>
-          <td><code>http://api.openweathermap.org/data/2.5//weather?q={city}&appid=KEY&lang={lang}kr&units=metric &nbsp;&nbsp;</code></td>
-          <td><code>&nbsp;&nbsp;&nbsp;weather key&nbsp;&nbsp;&nbsp;&nbsp;</code></td>
-          <td>발급 완료</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+    <section id="s6">
+      <h2>6. 퍼뜨릴 계획과 받고 싶은 페이지</h2>
+      <!-- TODO 기획서 6: 내 플러스원을 누구에게 보낼지, 왜 쓸모 있는지, 받고 싶은 페이지 아이디어 -->
+      <ul>
+        <li>누구에게 : <span>영화를 좋아하는 동료</spanclass=></li>
+        <li>왜 쓸모 : <span>날씨에 어울리는 영화를 볼 수 있음</span></li>
+        <li>받고 싶은 페이지 : <span>식약처 조리 레시피</spanclass=></li>
+      </ul>
+    </section>
 
-  <!-- 4. 주소창 호출 결과 캡처 1장 -->
-  <section>
-    <h2>4. 주소창 호출 결과 캡처</h2>
-    <figure>
-      <img src="./call.png" alt="API 주소창 호출 결과 캡처" />
-      <figcaption>그림 1. 브라우저 주소창을 통한 API JSON 응답 호출 결과</figcaption>
-    </figure>
-  </section>
+    <section id="s7">
+      <h2>7. 13~15주차 일정과 위험, 대안</h2>
+      <!-- TODO 기획서 7: 주차별 할 일과, 실제로 일어날 수 있는 일 ⇒ 그때 할 행동(예: 정보나루 승인이 늦으면 식약처 레시피로 바꾼다) -->
+      <ul>
+        <li>일정 : <span>13주차 전체 HTML/CSS 기본 틀 완성 및 박스오피스 API 연동 / 14주차 상세 페이지, 플러스원 페이지 구현 / 15주차 예외 처리, 디자인 마무리, GitHub Pages 배포 및 최종 점검</span></li>
+        <li><span>KOBIS API에 영화 포스터 이미지가 제공되지 않음 ⇒ TMDB API를 함께 호출해 영화 제목으로 포스터 이미지를 매핑하고, 없을 경우 기본 이미지 표시</spanclass=></li>
+        <li><span>위험 2 ⇒ 그때 할 행동</spanclass=></li>
+      </ul>
+    </section>
+  </div>
 
-  <!-- 5. 화면 스케치 2장 (보드, 플러스원 - figure) -->
-  <section>
-    <h2>5. 화면 스케치 (보드, 플러스원)</h2>
-    <figure>
-      <img src="./board.jpg" alt="보드 화면 스케치" style="max-width: 500px; width: 100%; height: auto;"/>
-      <figcaption>그림 2. 보드(Board) 페이지 화면 스케치</figcaption>
-    </figure>
-    <figure>
-      <img src="./plusonePage.jpg" alt="플러스원 화면 스케치" style="max-width: 500px; width: 100%; height: auto;"/>
-      <figcaption>그림 3. 플러스원 페이지 화면 스케치</figcaption>
-    </figure>
-  </section>
-
-  <!-- 6. 퍼뜨릴 계획과 받고 싶은 페이지 -->
-  <section>
-    <h2>6. 퍼뜨릴 계획과 받고 싶은 페이지</h2>
-    <ul>
-      <li><strong>누구에게:</strong> 영화를 즐기는 동료 </li>
-      <li><strong>왜 쓸모가 있는가:</strong> 영화를 보려고 할 때 바깥의 날씨 상황을 확인 후 일정을 조정할 수 있기 때문</li>
-      <li><strong>받고 싶은 페이지:</strong> 식약처 조리 레시피 </li>
-    </ul>
-  </section>
-
-  <!-- 7. 13~15주차 일정과 위험, 대안 -->
-  <section>
-    <h2>7. 13~15주차 일정과 위험, 대안</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>주차</th>
-          <th>계획</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>13주차</td>
-          <td>전체 HTML/CSS 기본 틀 완성 및 박스오피스 API 연동</td>
-        </tr>
-        <tr>
-          <td>14주차</td>
-          <td>상세 페이지, localStorage 기반 보드 기능, 플러스원 페이지 구현</td>
-        </tr>
-        <tr>
-          <td>15주차</td>
-          <td>예외 처리, 디자인 마무리, GitHub Pages 배포 및 최종 점검</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table>
-      <thead>
-        <tr>
-          <th>예상 위험</th>
-          <th>대안</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>KOBIS API에 영화 포스터 이미지가 제공되지 않음&nbsp;&nbsp;&nbsp;&nbsp;</td>
-          <td>TMDB API를 함께 호출해 영화 제목으로 포스터 이미지를 매핑하고, 없을 경우 기본 이미지 표시</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
+  <script>
+    // 남은 TODO 상자 수를 화면 맨 위에 알려 줌(다 지우면 띠가 사라짐). 이 script는 지우지 않아도 됩니다
+    const left = document.querySelectorAll(".todo").length;
+    if (left > 0) {
+      const box = document.querySelector("#todo-left");
+      box.textContent = "남은 TODO " + left + "곳 : 노란 점선 상자를 내 내용으로 바꾸세요";
+      box.style.display = "block";
+    }
+  </script>
 </body>
 </html>
