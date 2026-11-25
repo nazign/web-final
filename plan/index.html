@@ -42,7 +42,7 @@
     .shot { border: 1px solid #b8c2d2; border-radius: 6px; overflow: hidden; background: #fff; }
     .shot .bar { background: #e9ecf1; padding: 4px 10px; font-family: Consolas, monospace; font-size: 14px; color: #333; overflow-wrap: anywhere; }
     /* 그림 : 파일이 아직 없으면 빗금 상자로 보임 */
-    figure img { display: block; width: 100%; height: auto; min-height: 140px; max-height: 520px; object-fit: contain; background: repeating-linear-gradient(135deg, #fff 0 10px, #eef1f6 10px 20px); }
+    figure img { display: block; width: 100%; height: auto; min-height: 140px; max-height: 520px; object-fit: cover; background: repeating-linear-gradient(135deg, #fff 0 10px, #eef1f6 10px 20px); }
     .sk { display: flex; gap: 12px; }
     .sk figure { flex: 1; min-width: 0; margin-top: 0; }
     /* TODO 상자 : 내 내용을 쓰면 지움 */
@@ -101,7 +101,7 @@
           <tr>
             <td><span>Weather APIs</spanclass=></td>
             <td><span>OpenWeatherMap</spanclass=></td>
-            <td><code><span>http://api.openweathermap.org/data/2.5//weather?q={city}&appid=KEY&lang={lang}&units=metric</spans=></code></td>
+            <td><code><span>http://api.openweathermap.org/data/2.5/weather?q={city}&appid=KEY&lang={lang}&units=metric</spans=></code></td>
             <td><code><span>Weather_KEY</spans=></code></td>
             <td><span>받음</spanass=></td>
           </tr>
@@ -116,7 +116,7 @@
       <figure>
         <div class="shot">
           <!-- TODO 기획서 4: 주소 줄에는 내가 부른 주소를 쓰되 키 자리는 KEY -->
-          <div class="bar"><span>http://api.openweathermap.org/data/2.5//weather?q=daejeon&appid=KEY&lang=kr&units=metric</span></div>
+          <div class="bar"><span>http://api.openweathermap.org/data/2.5/weather?q=daejeon&appid=KEY&lang=kr&units=metric</span></div>
           <img src="call.png" alt="주소창 호출 결과">
         </div>
         <figcaption>call.png : <span>현재 온도, 강수량, 풍속, 구름의 종류, 경도, 위도 등</spanlass=></figcaption>
@@ -124,7 +124,7 @@
       <!-- TODO 기획서 4: 안내문 9.5절 카탈로그 밖 API를 쓸 때만 아래 figure를 남기고 console.png를 넣음. 카탈로그 안 API만 쓰면 아래 figure를 통째로 지움 -->
       <figure>
         <img src="console.png" alt="콘솔 fetch 성공 화면">
-        <figcaption>console.png : <span class="todo">TODO 카탈로그 밖 API일 때만, 개발자 도구 Console에서 fetch로 부른 응답이 빨간 오류 없이 보이는 화면</span></figcaption>
+        <figcaption>console.png : <span>응답 화면</span></figcaption>
       </figure>
     </section>
 
@@ -159,7 +159,7 @@
       <ul>
         <li>일정 : <span>13주차 전체 HTML/CSS 기본 틀 완성 및 박스오피스 API 연동 / 14주차 상세 페이지, 플러스원 페이지 구현 / 15주차 예외 처리, 디자인 마무리, GitHub Pages 배포 및 최종 점검</span></li>
         <li><span>KOBIS API에 영화 포스터 이미지가 제공되지 않음 ⇒ TMDB API를 함께 호출해 영화 제목으로 포스터 이미지를 매핑하고, 없을 경우 기본 이미지 표시</spanclass=></li>
-        <li><span>위험 2 ⇒ 그때 할 행동</spanclass=></li>
+        <li><span>카드가 화면에 보이지 않음⇒ id, class, js 등에서 문제가 있는지 확인 후 해결</spanclass=></li>
       </ul>
     </section>
   </div>
